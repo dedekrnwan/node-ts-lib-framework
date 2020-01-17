@@ -14,16 +14,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const utils_1 = require("../utils");
+const path_1 = __importDefault(require("path"));
 class Bootable {
     constructor() {
         this.use = (core, app) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (app.bootable) {
-                    yield utils_1.asyncForEach(app.bootable, (path) => __awaiter(this, void 0, void 0, function* () {
-                        const dirList = fs_1.default.readdirSync(path);
+                    yield utils_1.asyncForEach(app.bootable, (folder) => __awaiter(this, void 0, void 0, function* () {
+                        const dirList = fs_1.default.readdirSync(folder);
                         const promiseDirList = dirList.map((dirName) => new Promise((res, rej) => __awaiter(this, void 0, void 0, function* () {
                             try {
-                                const fName = path.join(path, dirName);
+                                const fName = path_1.default.join(folder, dirName);
                                 const file = (require(fName).default) ? yield require(fName).default() : fName;
                                 res(file);
                             }
@@ -32,8 +33,8 @@ class Bootable {
                             }
                         })));
                         const result = yield Promise.all(promiseDirList);
-                        resolve(result);
                     }));
+                    resolve(undefined);
                 }
                 else {
                     resolve(undefined);

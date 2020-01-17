@@ -26,8 +26,8 @@ export default class Bootable implements IApplicationUtils {
                         }
                     }));
                     const result = await Promise.all(promiseDirList)
-                    resolve(result)
                 }) 
+                resolve(undefined)
             }else{
                 resolve(undefined)
             }
