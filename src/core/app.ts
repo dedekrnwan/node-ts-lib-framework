@@ -157,5 +157,20 @@ export default class App implements IApplicationCore {
             reject(error)
         }
     })   
+    setBootable = (path: string): Promise<void> => new Promise<void>(async (resolve, reject) => {
+        try {
+            if(path.trim() !== ''){
+                this.app.bootable.push(path)
+                resolve(undefined)
+            }else{
+                reject({
+                    message: 'Error path is string empty'
+                })
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })   
+    
     //#endregion
 }

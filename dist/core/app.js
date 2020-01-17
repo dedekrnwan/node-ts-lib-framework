@@ -163,6 +163,22 @@ class App {
                 reject(error);
             }
         }));
+        this.setBootable = (path) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (path.trim() !== '') {
+                    this.app.bootable.push(path);
+                    resolve(undefined);
+                }
+                else {
+                    reject({
+                        message: 'Error path is string empty'
+                    });
+                }
+            }
+            catch (error) {
+                reject(error);
+            }
+        }));
         this.app = properties || {
             bootable: [],
             static: [],
