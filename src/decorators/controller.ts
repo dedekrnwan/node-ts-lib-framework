@@ -1,7 +1,4 @@
 
-import * as express from "express";
-import { IRoutes } from "./../interfaces";
-
 export const Controller = (prefix:string):ClassDecorator => {
     return (target:any):void => {
         const metakey:any = {

@@ -4,5 +4,6 @@ export * from "./decorators";
 export * from "./exception";
 export * from "./response";
 export * from "./core";
+export * from "./interfaces"
 
 export default App
