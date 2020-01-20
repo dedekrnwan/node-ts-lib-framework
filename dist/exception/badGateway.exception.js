@@ -7,7 +7,7 @@ const http_exception_1 = __importDefault(require("./http.exception"));
 class BadGatewayException extends http_exception_1.default {
     constructor(context) {
         super(context);
-        this.code = context.code || 501;
+        this.code = context.code || 502;
         this.message = context.message || 'Bad gateway';
         this.error = context.error || null;
     }

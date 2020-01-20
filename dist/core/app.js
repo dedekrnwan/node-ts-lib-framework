@@ -96,20 +96,9 @@ class App {
             }
         }));
         //#region set
-        this.setModules = (path, prefix) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        this.setModules = (props) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
-                if (path) {
-                    this.app.modules.push({
-                        path,
-                        prefix
-                    });
-                    resolve(undefined);
-                }
-                else {
-                    reject({
-                        message: `Modules path can't be null`
-                    });
-                }
+                this.app.modules = props;
             }
             catch (error) {
                 reject(error);
@@ -134,7 +123,7 @@ class App {
         this.setStatic = (props) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (props) {
-                    this.app.static.push(props);
+                    this.app.static = props;
                     resolve(undefined);
                 }
                 else {
@@ -163,7 +152,53 @@ class App {
                 reject(error);
             }
         }));
-        this.setBootable = (path) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        this.setBootable = (paths) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                this.app.bootable = paths;
+                resolve(undefined);
+            }
+            catch (error) {
+                reject(error);
+            }
+        }));
+        //#endregion
+        //#region add
+        this.addModules = (path, prefix) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (path) {
+                    this.app.modules.push({
+                        path,
+                        prefix
+                    });
+                    resolve(undefined);
+                }
+                else {
+                    reject({
+                        message: `Modules path can't be null`
+                    });
+                }
+            }
+            catch (error) {
+                reject(error);
+            }
+        }));
+        this.addStatic = (props) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (props) {
+                    this.app.static.push(props);
+                    resolve(undefined);
+                }
+                else {
+                    reject({
+                        message: `Static properties can't be null`
+                    });
+                }
+            }
+            catch (error) {
+                reject(error);
+            }
+        }));
+        this.addBootable = (path) => new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (path.trim() !== '') {
                     this.app.bootable.push(path);
