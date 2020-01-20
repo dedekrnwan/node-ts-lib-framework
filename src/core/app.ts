@@ -41,7 +41,7 @@ export default class App implements IApplicationCore {
             const listener = new Listener
             const result = await listener.use(this.core,this.app)
             result.forEach((dir: string) => {
-                console.log(`listening event ${dir}`);
+                this.app.logger ? this.app.logger.info(`listening event ${dir}`) : console.log(`listening event ${dir}`);
             });
             resolve(result)
         } catch (error) {

@@ -2,6 +2,7 @@ import Bootable from "./../common/bootable";
 import Kernel from "./../common/kernel";
 import express from "express";
 import http from "http";
+import winston from "winston";
 
 export interface IMiddlewares {
     before?(express: express.Application, middlewares: express.RequestHandler | Array<express.RequestHandler>) : express.Application
@@ -61,7 +62,8 @@ export interface IApplicationCore {
 }
 
 export interface IApplicationProperties extends Application {
-    context
+    context?:any;
+    logger?:winston.Logger
 }
 
 export interface IApplicationUtils {
