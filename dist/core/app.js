@@ -35,7 +35,7 @@ class App {
                 const listener = new listener_1.default;
                 const result = yield listener.use(this.core, this.app);
                 result.forEach((dir) => {
-                    console.log(`listening event ${dir}`);
+                    this.app.logger ? this.app.logger.info(`listening event ${dir}`) : console.log(`listening event ${dir}`);
                 });
                 resolve(result);
             }
