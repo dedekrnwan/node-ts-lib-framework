@@ -98,19 +98,9 @@ export default class App implements IApplicationCore {
     })
 
     //#region set
-    setModules = (path: string, prefix?: string): Promise<void> => new Promise<void>(async (resolve, reject) => {
+    setModules = (props: Array<{path: string, prefix?: string}>): Promise<void> => new Promise<void>(async (resolve, reject) => {
         try {
-            if(path){
-                this.app.modules.push({
-                    path,
-                    prefix
-                })
-                resolve(undefined)
-            }else{
-                reject({
-                    message: `Modules path can't be null`
-                })
-            }
+            this.app.modules = props
         } catch (error) {
             reject(error)
         }
@@ -129,10 +119,10 @@ export default class App implements IApplicationCore {
             reject(error)
         }
     })
-    setStatic = (props: IApplicationStaticProperties): Promise<void> => new Promise<void>(async (resolve, reject) => {
+    setStatic = (props: Array<IApplicationStaticProperties>): Promise<void> => new Promise<void>(async (resolve, reject) => {
         try {
             if(props){
-                this.app.static.push(props)
+                this.app.static = props
                 resolve(undefined)
             }else{
                 reject({
@@ -157,7 +147,48 @@ export default class App implements IApplicationCore {
             reject(error)
         }
     })   
-    setBootable = (path: string): Promise<void> => new Promise<void>(async (resolve, reject) => {
+    setBootable = (paths: Array<string>): Promise<void> => new Promise<void>(async (resolve, reject) => {
+        try {
+            this.app.bootable = paths
+            resolve(undefined)
+        } catch (error) {
+            reject(error)
+        }
+    })   
+    //#endregion
+    //#region add
+    addModules = (path: string, prefix?: string): Promise<void> => new Promise<void>(async (resolve, reject) => {
+        try {
+            if(path){
+                this.app.modules.push({
+                    path,
+                    prefix
+                })
+                resolve(undefined)
+            }else{
+                reject({
+                    message: `Modules path can't be null`
+                })
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })
+    addStatic = (props: IApplicationStaticProperties): Promise<void> => new Promise<void>(async (resolve, reject) => {
+        try {
+            if(props){
+                this.app.static.push(props)
+                resolve(undefined)
+            }else{
+                reject({
+                    message: `Static properties can't be null`
+                })
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })
+    addBootable = (path: string): Promise<void> => new Promise<void>(async (resolve, reject) => {
         try {
             if(path.trim() !== ''){
                 this.app.bootable.push(path)
@@ -170,7 +201,6 @@ export default class App implements IApplicationCore {
         } catch (error) {
             reject(error)
         }
-    })   
-    
+    })
     //#endregion
 }

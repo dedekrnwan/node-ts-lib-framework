@@ -48,6 +48,16 @@ export interface IApplicationCore {
     burn(kernel: Kernel): Promise<express.Application>;
     static?(folder?: string): Promise<express.Application>;
     run(port: number): Promise<IApplicationResult>;
+    
+    setModules(props: Array<{path: string, prefix?: string}>): Promise<void>;
+    setMiddlewares(middlewares: IApplicationMiddlewares): Promise<void>;
+    setStatic(props: Array<IApplicationStaticProperties>): Promise<void>;
+    setListener(path: string): Promise<void>;
+    setBootable(paths: Array<string>): Promise<void>;
+
+    addModules(path: string, prefix?: string): Promise<void>;
+    addStatic(props: IApplicationStaticProperties): Promise<void>;
+    addBootable(path: string): Promise<void>;
 }
 
 export interface IApplicationProperties extends Application {
