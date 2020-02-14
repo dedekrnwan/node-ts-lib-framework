@@ -6,6 +6,6 @@ export default class NotFoundException extends HttpException {
         super(context)
         this.code = context.code || 404
         this.message = context.message || 'Not Found'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

@@ -6,6 +6,6 @@ export default class UnSupportedMediaTypeException extends HttpException {
         super(context)
         this.code = context.code || 415
         this.message = context.message || 'UnSupported Media Type'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

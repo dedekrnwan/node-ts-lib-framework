@@ -6,6 +6,6 @@ export default class UnAuthorizedException extends HttpException {
         super(context)
         this.code = context.code || 401
         this.message = context.message || 'UnAuthorized'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

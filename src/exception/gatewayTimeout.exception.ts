@@ -6,6 +6,6 @@ export default class GatewayTimeoutException extends HttpException {
         super(context)
         this.code = context.code || 504
         this.message = context.message || 'Gateway Timeout'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

@@ -18,7 +18,7 @@ const utils_1 = require("../utils");
 class Kernel {
     constructor() {
         this.response = (structured, request, response, next) => {
-            response.status((structured.code) ? Number.isInteger(structured.code) ? structured.code : 500 : 500).json(structured);
+            response.status((structured.code) ? Number.isInteger(structured.code) ? structured.code < 600 ? structured.code : 500 : 500 : 500).json(structured);
         };
         this.notFound = (request, response, next) => {
             response.status(404).json({

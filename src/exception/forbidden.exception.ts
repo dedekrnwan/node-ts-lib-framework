@@ -6,6 +6,6 @@ export default class ForbiddenException extends HttpException {
         super(context)
         this.code = context.code || 403
         this.message = context.message || 'Forbidden'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

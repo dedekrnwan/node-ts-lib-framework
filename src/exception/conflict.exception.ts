@@ -6,6 +6,6 @@ export default class ConflictException extends HttpException {
         super(context)
         this.code = context.code || 409
         this.message = context.message || 'Conflict'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

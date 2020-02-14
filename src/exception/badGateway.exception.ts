@@ -6,6 +6,6 @@ export default class BadGatewayException extends HttpException {
         super(context)
         this.code = context.code || 502
         this.message = context.message || 'Bad gateway'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

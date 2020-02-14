@@ -6,6 +6,6 @@ export default class NotAcceptableException extends HttpException {
         super(context)
         this.code = context.code || 406
         this.message = context.message || 'Not Acceptable'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

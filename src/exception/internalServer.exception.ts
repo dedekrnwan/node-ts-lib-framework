@@ -6,6 +6,6 @@ export default class InternalServerException extends HttpException {
         super(context)
         this.code = context.code || 500
         this.message = context.message || 'Internal Server'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

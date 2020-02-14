@@ -6,6 +6,6 @@ export default class ServiceUnavailableException extends HttpException {
         super(context)
         this.code = context.code || 503
         this.message = context.message || 'Service Unavailable'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

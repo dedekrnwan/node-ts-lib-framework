@@ -6,6 +6,6 @@ export default class UnprocessableEntityException extends HttpException {
         super(context)
         this.code = context.code || 422
         this.message = context.message || 'Unprocessable Entity'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }

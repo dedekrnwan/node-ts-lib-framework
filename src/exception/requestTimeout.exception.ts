@@ -6,6 +6,6 @@ export default class RequestTimeoutException extends HttpException {
         super(context)
         this.code = context.code || 408
         this.message = context.message || 'Request Timeout'
-        this.error = context.error || null
+        context ? this.error = context : null
     }
 }
