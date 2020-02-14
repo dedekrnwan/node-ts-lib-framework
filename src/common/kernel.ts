@@ -13,7 +13,7 @@ export default class Kernel implements IApplicationUtils{
         this.Middlewares = new Middlewares
     }
     response = (structured: IResponse, request: express.Request, response: express.Response, next: express.NextFunction) => {
-        response.status((structured.code) ? Number.isInteger(structured.code) ? structured.code : 500 : 500).json(structured);
+        response.status((structured.code) ? Number.isInteger(structured.code) ? structured.code < 600 ? structured.code : 500 : 500 : 500).json(structured);
     }
     notFound = (request: express.Request, response: express.Response, next: express.NextFunction) => {
         response.status(404).json({
