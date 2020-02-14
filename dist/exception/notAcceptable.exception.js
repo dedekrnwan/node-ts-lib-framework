@@ -9,7 +9,7 @@ class NotAcceptableException extends http_exception_1.default {
         super(context);
         this.code = context.code || 406;
         this.message = context.message || 'Not Acceptable';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = NotAcceptableException;

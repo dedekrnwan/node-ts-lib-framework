@@ -9,7 +9,7 @@ class UnSupportedMediaTypeException extends http_exception_1.default {
         super(context);
         this.code = context.code || 415;
         this.message = context.message || 'UnSupported Media Type';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = UnSupportedMediaTypeException;

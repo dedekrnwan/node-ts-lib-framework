@@ -9,7 +9,7 @@ class UnAuthorizedException extends http_exception_1.default {
         super(context);
         this.code = context.code || 401;
         this.message = context.message || 'UnAuthorized';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = UnAuthorizedException;

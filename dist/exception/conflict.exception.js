@@ -9,7 +9,7 @@ class ConflictException extends http_exception_1.default {
         super(context);
         this.code = context.code || 409;
         this.message = context.message || 'Conflict';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = ConflictException;

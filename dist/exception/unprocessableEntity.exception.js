@@ -9,7 +9,7 @@ class UnprocessableEntityException extends http_exception_1.default {
         super(context);
         this.code = context.code || 422;
         this.message = context.message || 'Unprocessable Entity';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = UnprocessableEntityException;

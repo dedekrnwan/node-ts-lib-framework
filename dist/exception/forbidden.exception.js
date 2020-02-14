@@ -9,7 +9,7 @@ class ForbiddenException extends http_exception_1.default {
         super(context);
         this.code = context.code || 403;
         this.message = context.message || 'Forbidden';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = ForbiddenException;

@@ -9,7 +9,7 @@ class ServiceUnavailableException extends http_exception_1.default {
         super(context);
         this.code = context.code || 503;
         this.message = context.message || 'Service Unavailable';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = ServiceUnavailableException;

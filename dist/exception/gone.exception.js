@@ -9,7 +9,7 @@ class GoneException extends http_exception_1.default {
         super(context);
         this.code = context.code || 410;
         this.message = context.message || 'Gone Timeout';
-        context ? this.error = context : null;
+        this.error = context.error || null;
     }
 }
 exports.default = GoneException;
