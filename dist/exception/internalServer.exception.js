@@ -9,7 +9,7 @@ class InternalServerException extends http_exception_1.default {
         super(context);
         this.code = context.code || 500;
         this.message = context.message || 'Internal Server';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = InternalServerException;

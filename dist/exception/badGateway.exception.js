@@ -9,7 +9,7 @@ class BadGatewayException extends http_exception_1.default {
         super(context);
         this.code = context.code || 502;
         this.message = context.message || 'Bad gateway';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = BadGatewayException;

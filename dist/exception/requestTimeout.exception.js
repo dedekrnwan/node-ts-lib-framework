@@ -9,7 +9,7 @@ class RequestTimeoutException extends http_exception_1.default {
         super(context);
         this.code = context.code || 408;
         this.message = context.message || 'Request Timeout';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = RequestTimeoutException;

@@ -9,7 +9,7 @@ class GatewayTimeoutException extends http_exception_1.default {
         super(context);
         this.code = context.code || 504;
         this.message = context.message || 'Gateway Timeout';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = GatewayTimeoutException;

@@ -9,7 +9,7 @@ class PayloadTooLargeException extends http_exception_1.default {
         super(context);
         this.code = context.code || 413;
         this.message = context.message || 'Payload Too Large';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = PayloadTooLargeException;
