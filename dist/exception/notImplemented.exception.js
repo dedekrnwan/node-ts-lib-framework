@@ -9,7 +9,7 @@ class NotImplementedException extends http_exception_1.default {
         super(context);
         this.code = context.code || 501;
         this.message = context.message || 'Not implemented';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = NotImplementedException;

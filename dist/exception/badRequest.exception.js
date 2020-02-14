@@ -9,7 +9,7 @@ class BadRequestException extends http_exception_1.default {
         super(context);
         this.code = context.code || 400;
         this.message = context.message || 'Bad Request';
-        this.error = context.error || null;
+        context ? this.error = context : null;
     }
 }
 exports.default = BadRequestException;

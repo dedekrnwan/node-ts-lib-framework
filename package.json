@@ -6,7 +6,7 @@
   "types": "./src/index.ts",
   "scripts": {
     "build": "rm -rf ./dist/* && tsc",
-    "publish": "npm run build && npm publish"
+    "upload": "npm run build && npm publish"
   },
   "keywords": [
     "core",
